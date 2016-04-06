@@ -14,7 +14,7 @@ public enum ProductoDao {
 	  
 	  private ProductoDao() {
 	    
-	    Producto producto = new Producto("Paracetamol", "para el dolo de cabeza","1");
+	    Producto producto = new Producto("Paracetamol", "para el dolor de cabeza","1");
 	    contentProvider.put("1", producto);
 	    producto = new Producto("Jarabe", "Para la tos","2");
 	    contentProvider.put("2", producto);
