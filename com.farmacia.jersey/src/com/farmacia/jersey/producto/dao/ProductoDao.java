@@ -3,7 +3,7 @@ package com.farmacia.jersey.producto.dao;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.Producto;
+import com.farmacia.jersey.producto.model.Producto;
 
 
 public enum ProductoDao {

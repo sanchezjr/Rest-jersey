@@ -17,8 +17,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
-import dao.ProductoDao;
-import model.Producto;
+import com.farmacia.jersey.producto.dao.ProductoDao;
+import com.farmacia.jersey.producto.model.Producto;
 
 //Will map the resource to the URL productos
 @Path("/productos")
