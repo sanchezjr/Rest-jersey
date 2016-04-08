@@ -2,14 +2,81 @@ package com.farmacia.jersey.producto.dao;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.farmacia.jersey.producto.model.Producto;
+import com.farmacia.jersey.jdbc.DbConnection;
+import com.farmacia.jersey.jdbc.DbUtil;
 
+public class ProductoDao {
 
-public enum ProductoDao {
-	 instance;
+    private Connection connection;
+    private Statement statement;
+ 
+    public ProductoDao() { }
+ 
+    public List<Producto> getProductos() throws SQLException {
+        String query = "SELECT * FROM productos";
+        List<Producto> list = new ArrayList<Producto>();
+        Producto producto = null;
+        ResultSet rs = null;
+        try {
+            connection = DbConnection.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                producto = new Producto();
+                /*Retrieve one employee details 
+                and store it in employee object*/
+                producto.setId(rs.getString("id"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setDescripcion(rs.getString("descripcion"));
 
-	  
+ 
+                //add each employee to the list
+                list.add(producto);
+            }
+        } finally {
+            DbUtil.close(rs);
+            DbUtil.close(statement);
+            DbUtil.close(connection);
+        }
+        return list;
+    }
+    
+    public Producto getProductos(int productoId) throws SQLException {
+       // String query = "SELECT * FROM productos WHERE id LIKE '1'";
+        String query = "SELECT * FROM productos WHERE id LIKE "+ productoId;
+
+        Producto producto = null;
+        ResultSet rs = null;
+        try {
+            connection = DbConnection.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            if (rs.next()) {
+                producto = new Producto();
+                /*Retrieve one employee details 
+                and store it in employee object*/
+                producto.setId(rs.getString("id"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setDescripcion(rs.getString("descripcion"));
+
+            }
+        } finally {
+            DbUtil.close(rs);
+            DbUtil.close(statement);
+            DbUtil.close(connection);
+        }
+        return producto;
+    }
+	
+	/*	 instance;
 	private Map<String, Producto> contentProvider = new HashMap<>();
 	  
 	  private ProductoDao() {
@@ -24,5 +91,5 @@ public enum ProductoDao {
 	    return contentProvider;
 	  }
 	  
-
+*/
 }
