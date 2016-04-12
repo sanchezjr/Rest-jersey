@@ -1,0 +1,29 @@
+<html data-ng-app="FormApp">
+  <head>
+    <title>Webforms demo - AngularJS</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="js/form.js"></script>
+  </head>
+  <body data-ng-controller="FormController">
+    <h1>Por favor rellene los campos:</h1>
+    <ul>
+      <li data-ng-repeat="message in messages">{{message}}</li>
+    </ul>
+    <div>
+      <label>ID:</label>
+      <input data-ng-model="id" type="text">
+    </div>
+    <div>
+      <label>Nombre:</label>
+      <input data-ng-model="data.nombre" type="text">
+    </div>
+        <div>
+      <label>Descripcion:</label>
+      <input data-ng-model="data.descripcion" type="text">
+    </div>
+    <div>
+      <input data-ng-click="submit()" type="button" 
+             value="Registrar producto">
+    </div>
+  </body>
+</html>
