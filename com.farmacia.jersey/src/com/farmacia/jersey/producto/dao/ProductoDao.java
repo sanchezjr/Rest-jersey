@@ -32,7 +32,6 @@ public class ProductoDao {
         List<Producto> list = new ArrayList<Producto>();
         Producto producto = null;
         ResultSet rs = null;
-
         try {
             connection = DbConnection.getConnection();
             statement = connection.createStatement();
@@ -44,7 +43,7 @@ public class ProductoDao {
                 producto.setId(rs.getString("id"));
                 producto.setNombre(rs.getString("nombre"));
                 producto.setDescripcion(rs.getString("descripcion"));
-              
+
  
                 //add each employee to the list
                 list.add(producto);
@@ -56,6 +55,7 @@ public class ProductoDao {
         }
         return list;
     }
+    
     public JSONArray getProductosJson() throws SQLException {
         String query = "SELECT * FROM productos";
         List<Producto> list = new ArrayList<Producto>();
@@ -96,6 +96,7 @@ public class ProductoDao {
         return arra;
     }
     
+    
     public Producto getProductos(int productoId) throws SQLException {
        // String query = "SELECT * FROM productos WHERE id LIKE '1'";
         String query = "SELECT * FROM productos WHERE id LIKE "+ productoId;
@@ -122,7 +123,7 @@ public class ProductoDao {
         }
         return producto;
     }
-	
+    
     public void newProducto(String productoId, String nombre, String descripcion) throws SQLException {
         // String query = "SELECT * FROM productos WHERE id LIKE '1'";
          String query = "INSERT INTO productos(id, nombre, descripcion) VALUES ("+productoId+","+nombre+","+descripcion+")";
@@ -156,7 +157,8 @@ public class ProductoDao {
              DbUtil.close(statement);
              DbUtil.close(connection);
          }
-     }
+    }
+	
 	/*	 instance;
 	private Map<String, Producto> contentProvider = new HashMap<>();
 	  

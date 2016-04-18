@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.json.JsonObject;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -29,21 +28,19 @@ import com.farmacia.jersey.jdbc.*;
 import com.farmacia.jersey.producto.dao.ProductoDao;
 import com.farmacia.jersey.producto.model.*;
 import com.google.gson.Gson;
-import com.owlike.genson.Genson;
 
 @Path("/productos")
 public class RestProducto {
 
 
 	@GET 
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response getProducto() throws SQLException {
+	@Produces({ MediaType.APPLICATION_JSON })
+	public List<Producto> getProducto() throws SQLException {
 		List<Producto> courseList = new ArrayList<Producto>();
 		courseList = new ProductoDao().getProductos();
-		Genson gson = new Genson();		
-	
-		return Response.ok(courseList).build();
+		return courseList;
 	}
+	
 	@Path("/product")
 	@GET 
 	@Produces("application/json")
@@ -76,7 +73,6 @@ public class RestProducto {
 	public Producto getProducto(@PathParam("id") int id) throws SQLException {
 		Producto producto = new Producto();
 		producto = new ProductoDao().getProductos(id);
-		
 		return producto;
 	}
 	
@@ -101,6 +97,5 @@ public class RestProducto {
 		producto = new ProductoDao().getProductos(id);
 		return producto;
 	}
-
 
 }
