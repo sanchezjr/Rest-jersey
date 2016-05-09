@@ -1,4 +1,4 @@
-package com.farmacia.jersey.producto.dao;
+package com.farmacia.jersey.producto.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,6 @@ import javax.json.JsonObjectBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.farmacia.jersey.producto.model.Producto;
 import com.farmacia.jersey.jdbc.DbConnection;
 import com.farmacia.jersey.jdbc.DbUtil;
 
@@ -82,7 +81,7 @@ public class ProductoDao {
                 obj.put("nombre", rs.getString("nombre"));
                 obj.put("descripcion", rs.getString("descripcion"));
                 //add each employee to the list
-                list.add(producto);
+               // list.add(producto);
                 
                 arra.put(obj);
             }

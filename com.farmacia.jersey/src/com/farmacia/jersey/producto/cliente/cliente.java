@@ -25,7 +25,7 @@ public class cliente {
 		    WebTarget service = client.target(getBaseURI());
 
 		    // create one producto
-		    Producto producto = new Producto("3", "producto 1", "Descripcion 1");
+		    Producto producto = new Producto("3", "producto 1", "Descripcion 1",2,2);
 		    Response response = service.path("rest").path("productos").path(producto.getId()).request(MediaType.APPLICATION_XML).put(Entity.entity(producto,MediaType.APPLICATION_XML),Response.class);
 		    System.out.println("hello");
 
