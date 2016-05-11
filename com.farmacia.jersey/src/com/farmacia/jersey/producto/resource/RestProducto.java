@@ -27,7 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.farmacia.jersey.jdbc.*;
-import com.farmacia.jersey.producto.dao.ProductoDao;
 import com.farmacia.jersey.producto.model.*;
 import com.google.gson.Gson;
 

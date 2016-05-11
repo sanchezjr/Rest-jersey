@@ -1,0 +1,6 @@
+INDEX VERSION 1.3+/home/ruben/Documentos/trabajo/proyectosGit/web_service/Rest-jersey/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3852428799.index
+1811068401.index
+2107373138.index
+173017796.index
+2043987725.index
