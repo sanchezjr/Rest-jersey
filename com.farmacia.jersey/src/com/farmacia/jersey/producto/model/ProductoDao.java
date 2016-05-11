@@ -42,6 +42,7 @@ public class ProductoDao {
                 producto.setId(rs.getString("id"));
                 producto.setNombre(rs.getString("nombre"));
                 producto.setDescripcion(rs.getString("descripcion"));
+                producto.setDescripcion(rs.getString("precio"));
 
  
                 //add each employee to the list

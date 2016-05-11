@@ -36,6 +36,7 @@ public class UsuarioDao {
 	            	user.setDire(rs.getString("direccion"));
 	            	user.setTlfn(rs.getString("telefono"));
 	            	user.setEmail(rs.getString("email"));
+	            	user.setPass(rs.getString("pass"));
 
 	            }
 	        } finally {
@@ -95,10 +96,27 @@ public class UsuarioDao {
 	             DbUtil.close(connection);
 	         }
 	     }
+	    public void updateUsuarioById(int id,String nombre, String direccion, String telef, String email, String pass) throws SQLException {
+	        // String query = "SELECT * FROM productos WHERE id LIKE '1'";
+	         String query = "UPDATE `usuarios` SET `nombre`='"+nombre+"',`direccion`='"+direccion+"',`telefono`='"+telef+"',`email`='"+email+"',`pass`='"+pass+"' WHERE "+id+")";
 
-	    public boolean login(String nombre, String pass) throws Exception {
+	       //  Producto producto = null;
+	         ResultSet rs = null;
+	         try {
+	             connection = DbConnection.getConnection();
+	             statement = connection.createStatement();
+	             statement.executeUpdate(query);
+
+	         } finally {
+	             DbUtil.close(rs);
+	             DbUtil.close(statement);
+	             DbUtil.close(connection);
+	         }
+	     }
+
+	    public boolean login(String email, String pass) throws Exception {
 	    	boolean registrado = false;
-	        String query = "SELECT * FROM usuarios WHERE nombre = '" + nombre
+	        String query = "SELECT * FROM usuarios WHERE email = '" + email
                     + "' AND pass=" + "'" + pass + "'";
 
 	        ResultSet rs = null;
