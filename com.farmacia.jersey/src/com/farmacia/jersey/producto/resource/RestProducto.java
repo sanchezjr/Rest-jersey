@@ -1,5 +1,7 @@
 package com.farmacia.jersey.producto.resource;
 
+
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
